@@ -20,5 +20,10 @@ namespace RPG_Application
             positionY = posY;
             this.isWall = isWall;
         }
+
+        public bool GetIsWall()
+        {
+            return isWall;
+        }
     }
 }

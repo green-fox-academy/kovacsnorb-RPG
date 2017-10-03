@@ -20,29 +20,23 @@ namespace RPG_Application
     {
         Hero myHero;
         FoxDraw foxDraw;
+        List<Tile> wallTileList;
+        List<Tile> floorTileList;
+        Tile wallTiles;
+        Tile floorTiles;
 
         public MainWindow()
         {
             InitializeComponent();
             foxDraw = new FoxDraw(canvas);
-            var floorTiles = new Tile();
-            var floorTileList = floorTiles.FloorTilePositions();
-            var wallTiles = new Tile();
-            var wallTileList = floorTiles.WallTilePositions();
+            floorTiles = new Tile();
+            floorTileList = floorTiles.FloorTilePositions();
+            wallTiles = new Tile();
+            wallTileList = floorTiles.WallTilePositions();
             myHero = new Hero(0, 0);
 
-            for (int i = 0; i < floorTileList.Count; i++)
-            {
-                foxDraw.AddImage("./Assets/floor.png", floorTileList[i].positionX, floorTileList[i].positionY);
-            }
-
-            for (int i = 0; i < wallTileList.Count; i++)
-            {
-                foxDraw.AddImage("./Assets/wall.png", wallTileList[i].positionX, wallTileList[i].positionY);
-            }
-
+            DrawTable();
             foxDraw.AddImage("./Assets/hero-down.png", myHero.positionX, myHero.positionY);
-
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
@@ -50,24 +44,28 @@ namespace RPG_Application
             if (e.Key == Key.Left)
             {
                 myHero.HeroMoveLeft();
+                DrawTable();
                 foxDraw.AddImage("./Assets/hero-left.png", myHero.getPositionX(), myHero.getPositionY());
             }
 
             if (e.Key == Key.Right)
             {
                 myHero.HeroMoveRight();
+                DrawTable();
                 foxDraw.AddImage("./Assets/hero-right.png", myHero.getPositionX(), myHero.getPositionY());
             }
 
             if (e.Key == Key.Up)
             {
                 myHero.HeroMoveUp();
+                DrawTable();
                 foxDraw.AddImage("./Assets/hero-up.png", myHero.getPositionX(), myHero.getPositionY());
             }
 
             if (e.Key == Key.Down)
             {
                 myHero.HeroMoveDown();
+                DrawTable();
                 foxDraw.AddImage("./Assets/hero-down.png", myHero.getPositionX(), myHero.getPositionY());
             }
         }
