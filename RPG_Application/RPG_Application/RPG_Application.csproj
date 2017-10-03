@@ -55,6 +55,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Character.cs" />
+    <Compile Include="CurrentHero.cs" />
+    <Compile Include="GameLogic.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Tile.cs" />
     <Page Include="MainWindow.xaml">
@@ -108,6 +110,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\hero-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\hero-left.png" />
+    <Resource Include="Assets\hero-right.png" />
+    <Resource Include="Assets\hero-up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

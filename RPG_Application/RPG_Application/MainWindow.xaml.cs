@@ -18,15 +18,18 @@ namespace RPG_Application
 {
     public partial class MainWindow : Window
     {
+        Hero myHero;
+        FoxDraw foxDraw;
+
         public MainWindow()
         {
             InitializeComponent();
-            var foxDraw = new FoxDraw(canvas);
+            foxDraw = new FoxDraw(canvas);
             var floorTiles = new Tile();
             var floorTileList = floorTiles.FloorTilePositions();
             var wallTiles = new Tile();
             var wallTileList = floorTiles.WallTilePositions();
-            Hero myHero = new Hero(0, 0);
+            myHero = new Hero(0, 0);
 
             for (int i = 0; i < floorTileList.Count; i++)
             {
@@ -46,23 +49,46 @@ namespace RPG_Application
         {
             if (e.Key == Key.Left)
             {
-                Console.WriteLine("To the left!");
+                myHero.HeroMoveLeft();
+                foxDraw.AddImage("./Assets/hero-left.png", myHero.getPositionX(), myHero.getPositionY());
             }
 
             if (e.Key == Key.Right)
             {
-                Console.WriteLine("To the right!");
+                myHero.HeroMoveRight();
+                foxDraw.AddImage("./Assets/hero-right.png", myHero.getPositionX(), myHero.getPositionY());
             }
 
             if (e.Key == Key.Up)
             {
-                Console.WriteLine("Up!");
+                myHero.HeroMoveUp();
+                foxDraw.AddImage("./Assets/hero-up.png", myHero.getPositionX(), myHero.getPositionY());
             }
 
             if (e.Key == Key.Down)
             {
-                Console.WriteLine("Down!");
+                myHero.HeroMoveDown();
+                foxDraw.AddImage("./Assets/hero-down.png", myHero.getPositionX(), myHero.getPositionY());
             }
+        }
+
+        public void DrawTable()
+        {
+            var floorTiles = new Tile();
+            var floorTileList = floorTiles.FloorTilePositions();
+            var wallTiles = new Tile();
+            var wallTileList = floorTiles.WallTilePositions();
+
+            for (int i = 0; i < floorTileList.Count; i++)
+            {
+                foxDraw.AddImage("./Assets/floor.png", floorTileList[i].positionX, floorTileList[i].positionY);
+            }
+
+            for (int i = 0; i < wallTileList.Count; i++)
+            {
+                foxDraw.AddImage("./Assets/wall.png", wallTileList[i].positionX, wallTileList[i].positionY);
+            }
+
         }
     }
 }

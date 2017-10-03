@@ -13,5 +13,39 @@ namespace RPG_Application
             this.positionX = posX;
             this.positionY = posY;
         }
+
+        public double getPositionX()
+        {
+            return this.positionX;
+        }
+
+        public double getPositionY()
+        {
+            return this.positionY;
+        }
+
+        public double HeroMoveRight()
+        {
+            this.positionX = positionX + 50;
+            return positionX;
+        }
+
+        public double HeroMoveLeft()
+        {
+            this.positionX = positionX - 50;
+            return positionX;
+        }
+
+        public double HeroMoveUp()
+        {
+            this.positionY = positionY - 50;
+            return positionY;
+        }
+
+        public double HeroMoveDown()
+        {
+            this.positionY = positionY + 50;
+            return positionY;
+        }
     }
 }
