@@ -27,53 +27,44 @@ namespace RPG_Application
         public double HeroMoveRight()
         {
             this.positionX = positionX + 50;
-            if (this.positionX < 500)
-            {
-                return this.positionX;
-            }
-            else
+
+            if ((this.positionX >= 500) || (GetIsWall(positionX, positionY)))
             {
                 this.positionX -= 50;
             }
+
             return this.positionX;
         }
 
         public double HeroMoveLeft()
         {
             this.positionX = positionX - 50;
-            if (this.positionX >= 0)
-            {
-                return this.positionX;
-            }
-            else
+
+            if ((this.positionX < 0) || (GetIsWall(positionX, positionY)))
             {
                 this.positionX += 50;
             }
+
             return this.positionX;
         }
 
         public double HeroMoveUp()
         {
             this.positionY = positionY - 50;
-            if (this.positionY >= 0)
-            {
-                return this.positionY;
-            }
-            else
+
+            if ((this.positionY < 0) || (GetIsWall(positionX, positionY)))
             {
                 this.positionY += 50;
             }
+
             return this.positionY;
         }
 
         public double HeroMoveDown()
         {
             this.positionY = positionY + 50;
-            if (this.positionY <= 500)
-            {
-                return this.positionY;
-            }
-            else
+
+            if ((this.positionY > 500) || (GetIsWall(positionX, positionY)))
             {
                 this.positionY -= 50;
             }

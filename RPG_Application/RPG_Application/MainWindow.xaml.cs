@@ -20,19 +20,15 @@ namespace RPG_Application
     {
         Hero myHero;
         FoxDraw foxDraw;
-        List<Tile> wallTileList;
-        List<Tile> floorTileList;
-        Tile wallTiles;
-        Tile floorTiles;
+        List<Tile> boardTileList;
+        Tile boardTiles;
 
         public MainWindow()
         {
             InitializeComponent();
             foxDraw = new FoxDraw(canvas);
-            floorTiles = new Tile();
-            floorTileList = floorTiles.FloorTilePositions();
-            wallTiles = new Tile();
-            wallTileList = floorTiles.WallTilePositions();
+            //boardTiles = new Tiles();
+            boardTileList = Character.TilePositions();
             myHero = new Hero(0, 0);
 
             DrawTable();
@@ -72,21 +68,18 @@ namespace RPG_Application
 
         public void DrawTable()
         {
-            var floorTiles = new Tile();
-            var floorTileList = floorTiles.FloorTilePositions();
-            var wallTiles = new Tile();
-            var wallTileList = floorTiles.WallTilePositions();
 
-            for (int i = 0; i < floorTileList.Count; i++)
+            for (int i = 0; i < boardTileList.Count; i++)
             {
-                foxDraw.AddImage("./Assets/floor.png", floorTileList[i].positionX, floorTileList[i].positionY);
+                if (boardTileList[i].GetIsWall())
+                {
+                    foxDraw.AddImage("./Assets/wall.png", boardTileList[i].positionX, boardTileList[i].positionY);
+                }
+                else
+                {
+                    foxDraw.AddImage("./Assets/floor.png", boardTileList[i].positionX, boardTileList[i].positionY);
+                }
             }
-
-            for (int i = 0; i < wallTileList.Count; i++)
-            {
-                foxDraw.AddImage("./Assets/wall.png", wallTileList[i].positionX, wallTileList[i].positionY);
-            }
-
         }
     }
 }
