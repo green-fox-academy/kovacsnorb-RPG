@@ -19,20 +19,30 @@ namespace RPG_Application
     public partial class MainWindow : Window
     {
         Hero myHero;
+        Skeleton mySkeleton1;
+        Skeleton mySkeleton2;
+        Skeleton mySkeleton3;
         FoxDraw foxDraw;
         List<Tile> boardTileList;
-        Tile boardTiles;
 
         public MainWindow()
         {
+            Random rand = new Random();
             InitializeComponent();
             foxDraw = new FoxDraw(canvas);
             //boardTiles = new Tiles();
             boardTileList = Character.TilePositions();
             myHero = new Hero(0, 0);
+            mySkeleton1 = new Skeleton(rand);
+            mySkeleton2 = new Skeleton(rand);
+            mySkeleton3 = new Skeleton(rand);
+
 
             DrawTable();
             foxDraw.AddImage("./Assets/hero-down.png", myHero.positionX, myHero.positionY);
+            foxDraw.AddImage("./Assets/skeleton.png", mySkeleton1.positionX, mySkeleton1.positionY);
+            foxDraw.AddImage("./Assets/skeleton.png", mySkeleton2.positionX, mySkeleton2.positionY);
+            foxDraw.AddImage("./Assets/skeleton.png", mySkeleton3.positionX, mySkeleton3.positionY);
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
@@ -42,6 +52,9 @@ namespace RPG_Application
                 myHero.HeroMoveLeft();
                 DrawTable();
                 foxDraw.AddImage("./Assets/hero-left.png", myHero.getPositionX(), myHero.getPositionY());
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton1.positionX, mySkeleton1.positionY);
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton2.positionX, mySkeleton2.positionY);
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton3.positionX, mySkeleton3.positionY);
             }
 
             if (e.Key == Key.Right)
@@ -49,6 +62,9 @@ namespace RPG_Application
                 myHero.HeroMoveRight();
                 DrawTable();
                 foxDraw.AddImage("./Assets/hero-right.png", myHero.getPositionX(), myHero.getPositionY());
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton1.positionX, mySkeleton1.positionY);
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton2.positionX, mySkeleton2.positionY);
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton3.positionX, mySkeleton3.positionY);
             }
 
             if (e.Key == Key.Up)
@@ -56,6 +72,9 @@ namespace RPG_Application
                 myHero.HeroMoveUp();
                 DrawTable();
                 foxDraw.AddImage("./Assets/hero-up.png", myHero.getPositionX(), myHero.getPositionY());
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton1.positionX, mySkeleton1.positionY);
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton2.positionX, mySkeleton2.positionY);
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton3.positionX, mySkeleton3.positionY);
             }
 
             if (e.Key == Key.Down)
@@ -63,6 +82,9 @@ namespace RPG_Application
                 myHero.HeroMoveDown();
                 DrawTable();
                 foxDraw.AddImage("./Assets/hero-down.png", myHero.getPositionX(), myHero.getPositionY());
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton1.positionX, mySkeleton1.positionY);
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton2.positionX, mySkeleton2.positionY);
+                foxDraw.AddImage("./Assets/skeleton.png", mySkeleton3.positionX, mySkeleton3.positionY);
             }
         }
 

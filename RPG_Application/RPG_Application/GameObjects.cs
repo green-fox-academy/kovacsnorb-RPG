@@ -15,5 +15,6 @@ namespace RPG_Application
         public double positionX = 0;
         public double positionY = 0;
         public bool isWall = false;
+        public bool isEmpty = false;
     }
 }
